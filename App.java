@@ -101,7 +101,11 @@ public class App {
     static final List<Order> orders = Collections.synchronizedList(new ArrayList<>());
 
     static {
-        // 1. ساعة MSTIANQ الأصلية
+        // إضافة طلبات تجريبية أولية للتأكد من عمل لوحة التحكم فوراً
+        orders.add(new Order("مجتبى عبدالله", "mojtaba@example.com", "0501234567", "مكة المكرمة", "ساعة MSTIANQ الكلاسيكية [بني خشبي] - 40 ر.س", 40, "يرجى التوصيل بعد العصر", "2026-09-27 10:15"));
+        orders.add(new Order("سالم الحربي", "salem@example.com", "0559876543", "الرياض", "محفظة ذكية من ألياف الكربون [أسود كربون مات] - 35 ر.س", 35, "الاتصال قبل الوصول", "2026-09-27 11:30"));
+
+        // كتالوج المنتجات
         products.put(1, new Product(
             1,
             "ساعة MSTIANQ الكلاسيكية المربعة",
@@ -120,20 +124,18 @@ public class App {
             Arrays.asList("بني كلاسيكي (خشبي)", "أسود ملكي كامل", "كحلي كلاسيكي", "رمادي معدني")
         ));
 
-        // 2. محفظة بطاقات ونقود ذكية
         products.put(2, new Product(
             2,
             "محفظة ذكية من ألياف الكربون مع حماية RFID",
             35,
             70,
             "الأعلى مبيعاً",
-            "محفظة عصرية نحيفة من ألياف الكربون مع نظام إخراج البطاقات السريع وحماية كاملة ضد سرقة بيانات البطاقات الائتمانية.",
+            "محفظة عصرية نحيفة من ألياف الكربون مع نظام إخراج البطاقات السريع وحماية كاملة ضد سرقة بيانات البطاقات.",
             "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&auto=format&fit=crop&q=80",
             Arrays.asList("https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&auto=format&fit=crop&q=80"),
             Arrays.asList("أسود كربون مات", "رمادي تيتانيوم", "فضي معدني")
         ));
 
-        // 3. نظارة شمسية كلاسيكية مستقطبة
         products.put(3, new Product(
             3,
             "نظارة شمسية بولارايزد كلاسيكية UV400",
@@ -143,36 +145,33 @@ public class App {
             "إطار معدني خفيف الوزن مع عدسات بولارايزد عاكسة ومضادة للأشعة فوق البنفسجية لحماية العين وأناقة استثنائية.",
             "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&auto=format&fit=crop&q=80",
             Arrays.asList("https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&auto=format&fit=crop&q=80"),
-            Arrays.asList("إطار أسود مع عدسات سوداء", "إطار ذهبي مع عدسات خضراء كلاسيكية", "إطار فضي")
+            Arrays.asList("إطار أسود مع عدسات سوداء", "إطار ذهبي مع عدسات خضراء", "إطار فضي")
         ));
 
-        // 4. قلم معدني فاخر متعدد الوظائف
         products.put(4, new Product(
             4,
             "طقم قلم تنفيذي فاخر من التيتانيوم",
             25,
             55,
             "عرض مميز",
-            "قلم مكتب وتوقيع فاخر مصنوع من سبائك الألومنيوم والتيتانيوم المتينة مع كتابة ناعمة وحبر ألماني قابل لإعادة التعبئة.",
+            "قلم مكتب وتوقيع فاخر مصنوع من سبائك التيتانيوم المتينة مع كتابة ناعمة وحبر ألماني قابل لإعادة التعبئة.",
             "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=800&auto=format&fit=crop&q=80",
             Arrays.asList("https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=800&auto=format&fit=crop&q=80"),
             Arrays.asList("أسود ملكي مع حواف ذهبية", "فضي مطفي", "رمادي حديدي")
         ));
 
-        // 5. سماعات بلوتوث ميني بخاصية عزل الضوضاء
         products.put(5, new Product(
             5,
             "سماعات أذن لاسلكية TWS بتقنية Hi-Fi",
             55,
             120,
             "تكنولوجيا متطورة",
-            "صوت نقي ثلاثي الأبعاد مع بطارية تدوم حتى 28 ساعة وشاشة رقمية لعرض نسبة الشحن ومقاومة لرذاذ الماء والتعرق.",
+            "صوت نقي مع بطارية تدوم حتى 28 ساعة وشاشة رقمية لعرض نسبة الشحن ومقاومة لرذاذ الماء والتعرق.",
             "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&auto=format&fit=crop&q=80",
             Arrays.asList("https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&auto=format&fit=crop&q=80"),
             Arrays.asList("أسود بيانو فخم", "أبيض سيراميك")
         ));
 
-        // 6. شاحن لاسلكي مكتبي سريع 3 في 1
         products.put(6, new Product(
             6,
             "محطة شحن لاسلكي مغناطيسية 3 في 1",
@@ -206,12 +205,16 @@ public class App {
         server.createContext("/register", new RegisterHandler());
         server.createContext("/logout", new LogoutHandler());
         server.createContext("/account", new AccountHandler());
+        
+        // تسجيل مسار الأدمن بالصيغتين لحل مشكلة عدم الفتح تماماً
         server.createContext("/admin", new AdminHandler());
+        server.createContext("/admin/", new AdminHandler());
+
         server.setExecutor(null);
 
         System.out.println("==========================================");
-        System.out.println("متجر رِواق (REWAQ) الشامل يعمل بنجاح!");
-        System.out.println("الرابط: http://localhost:" + port);
+        System.out.println("متجر رِواق (REWAQ) يعمل الآن بنجاح!");
+        System.out.println("لوحة الأدمن جاهزة على: /admin");
         System.out.println("==========================================");
 
         server.start();
@@ -293,11 +296,12 @@ public class App {
             """;
     }
 
-    // 1. الصفحة الأولى: الواجهة الترحيبية
+    // 1. الرئيسية
     static class HomeHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
-            if (!exchange.getRequestURI().getPath().equals("/")) {
+            String path = exchange.getRequestURI().getPath();
+            if (!path.equals("/") && !path.isEmpty()) {
                 exchange.sendResponseHeaders(404, -1);
                 return;
             }
@@ -346,7 +350,7 @@ public class App {
         }
     }
 
-    // 2. صفحة كتالوج المنتجات المتعددة
+    // 2. كتالوج المنتجات
     static class ProductsCatalogHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -383,7 +387,7 @@ public class App {
             sb.append(".img-box { position: relative; width: 100%; aspect-ratio: 1/1; background: #000; overflow: hidden; }");
             sb.append(".img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s ease; }");
             sb.append(".product-card:hover .img-box img { transform: scale(1.05); }");
-            sb.append(".p-badge { position: absolute; top: 12px; right: 12px; background: rgba(15,17,21,0.85); color: var(--primary); border: 1px solid var(--primary); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); }");
+            sb.append(".p-badge { position: absolute; top: 12px; right: 12px; background: rgba(15,17,21,0.85); color: var(--primary); border: 1px solid var(--primary); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }");
             sb.append(".p-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }");
             sb.append(".p-body h3 { font-size: 17px; margin-bottom: 8px; line-height: 1.4; color: #fff; }");
             sb.append(".p-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }");
@@ -404,7 +408,7 @@ public class App {
         }
     }
 
-    // 3. صفحة المنتج الفردي بالتفصيل والصور وخيار الإضافة للسلة
+    // 3. صفحة المنتج الفردي
     static class ProductDetailHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -440,7 +444,6 @@ public class App {
             sb.append("<link href='https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap' rel='stylesheet'>");
             sb.append("<style>").append(getCommonStyles());
             sb.append(".back-btn { display: inline-block; color: var(--text-muted); text-decoration: none; margin-bottom: 20px; font-size: 14px; font-weight: 600; }");
-            sb.append(".back-btn:hover { color: var(--primary); }");
             sb.append(".product-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; }");
             sb.append("@media (max-width: 850px) { .product-wrapper { grid-template-columns: 1fr; padding: 20px; } }");
             sb.append(".gallery { display: flex; flex-direction: column; gap: 15px; }");
@@ -458,7 +461,6 @@ public class App {
             sb.append(".form-group { margin-bottom: 16px; } label { display: block; font-size: 13px; margin-bottom: 6px; color: #b8bfcc; }");
             sb.append("select { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--card-border); background: #1a1e26; color: #fff; font-size: 14px; outline: none; }");
             sb.append(".submit-btn { width: 100%; padding: 14px; background: var(--primary); border: none; border-radius: 10px; color: #000; font-size: 17px; font-weight: 800; cursor: pointer; transition: 0.2s; }");
-            sb.append(".submit-btn:hover { background: var(--primary-dark); }");
             sb.append(".modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }");
             sb.append(".modal img { max-width: 90%; max-height: 90%; border-radius: 12px; }");
             sb.append("</style></head><body>");
@@ -468,7 +470,6 @@ public class App {
             sb.append("<a href='/products' class='back-btn'>← العودة لكافة المنتجات</a>");
             sb.append("<div class='product-wrapper'>");
 
-            // المعرض
             sb.append("<div class='gallery'>");
             sb.append("<div class='main-img-container' onclick='openModal()'>");
             sb.append("<img id='mainImg' class='main-image' src='").append(prod.mainImage).append("' alt='").append(prod.name).append("'>");
@@ -476,7 +477,6 @@ public class App {
             sb.append("<div class='thumbnails'>").append(thumbs).append("</div>");
             sb.append("</div>");
 
-            // التفاصيل والشراء
             sb.append("<div class='details'>");
             sb.append("<span class='badge'>").append(prod.badge).append("</span>");
             sb.append("<h1>").append(prod.name).append("</h1>");
@@ -507,7 +507,7 @@ public class App {
         }
     }
 
-    // 4. معالج إضافة المنتج للسلة والانتقال المباشر إليها
+    // 4. إضافة للسلة
     static class AddToCartHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -529,7 +529,7 @@ public class App {
         }
     }
 
-    // 5. صفحة السلة والدفع عند الاستلام
+    // 5. صفحة السلة
     static class CartHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -549,7 +549,7 @@ public class App {
                          .append("<img src='").append(it.image).append("' class='cart-thumb'>")
                          .append("<div class='cart-details'>")
                          .append("<h4>").append(it.productName).append("</h4>")
-                         .append("<p>الخيار / اللون: ").append(it.option).append("</p>")
+                         .append("<p>الخيار: ").append(it.option).append("</p>")
                          .append("</div>")
                          .append("<div class='cart-price'>").append(it.price).append(" ر.س</div>")
                          .append("</div>");
@@ -605,7 +605,7 @@ public class App {
         }
     }
 
-    // 6. إتمام الطلب وتفريغ السلة
+    // 6. الدفع وتفريغ السلة
     static class CheckoutHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -637,7 +637,7 @@ public class App {
                 String date = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date());
                 orders.add(new Order(name, email, phone, address, details.toString(), total, notes, date));
 
-                cart.clear(); // تفريغ السلة
+                cart.clear();
 
                 StringBuilder sb = new StringBuilder();
                 sb.append("<!DOCTYPE html><html lang='ar' dir='rtl'><head><meta charset='UTF-8'>");
@@ -660,7 +660,62 @@ public class App {
         }
     }
 
-    // إدارة الحسابات
+    // 7. لوحة إدارة الطلبات المباشرة (ADMIN)
+    static class AdminHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            StringBuilder rows = new StringBuilder();
+            if (orders.isEmpty()) {
+                rows.append("<tr><td colspan='7' style='text-align:center; padding:30px; color:var(--text-muted);'>لا توجد طلبات مسجلة حتى الآن</td></tr>");
+            } else {
+                for (Order o : orders) {
+                    rows.append("<tr>")
+                        .append("<td>").append(o.date).append("</td>")
+                        .append("<td>").append(o.name).append("</td>")
+                        .append("<td>").append(o.phone).append("</td>")
+                        .append("<td>").append(o.itemDetails).append("</td>")
+                        .append("<td style='color:var(--primary); font-weight:700;'>").append(o.total).append(" ر.س</td>")
+                        .append("<td>").append(o.address).append("</td>")
+                        .append("<td>").append(o.notes).append("</td>")
+                        .append("</tr>");
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("<!DOCTYPE html><html lang='ar' dir='rtl'><head><meta charset='UTF-8'>");
+            sb.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
+            sb.append("<title>لوحة الإدارة | متجر رِواق</title>");
+            sb.append("<link href='https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&display=swap' rel='stylesheet'>");
+            sb.append("<style>").append(getCommonStyles());
+            sb.append("table { width: 100%; border-collapse: collapse; background: #15181e; border-radius: 12px; overflow: hidden; border: 1px solid #232732; }");
+            sb.append("th, td { padding: 14px 18px; text-align: right; border-bottom: 1px solid #232732; font-size: 14px; }");
+            sb.append("th { background: #101217; color: #c5a059; font-weight: 700; } tr:hover { background: #1b1f28; }");
+            sb.append(".back-link { display: inline-block; margin-bottom: 16px; color: #8e95a5; text-decoration: none; font-size: 14px; }");
+            sb.append(".stats-bar { display: flex; gap: 20px; margin-bottom: 25px; flex-wrap: wrap; }");
+            sb.append(".stat-box { background: #15181e; border: 1px solid #232732; padding: 18px 24px; border-radius: 14px; flex: 1; min-width: 200px; }");
+            sb.append(".stat-num { font-size: 26px; font-weight: 800; color: var(--primary); margin-top: 5px; }");
+            sb.append("</style></head><body>");
+
+            sb.append("<div class='container'>");
+            sb.append("<a href='/' class='back-link'>← العودة للواجهة الرئيسية</a>");
+            sb.append("<h1 style='color:var(--primary); margin-bottom:20px; font-weight:800;'>لوحة إدارة ومتابعة الطلبات (REWAQ)</h1>");
+
+            sb.append("<div class='stats-bar'>");
+            sb.append("<div class='stat-box'><div>إجمالي الطلبات</div><div class='stat-num'>").append(orders.size()).append("</div></div>");
+            sb.append("<div class='stat-box'><div>حالة السيرفر</div><div class='stat-num' style='color:#51cf66; font-size:20px;'>متصل ويعمل ✅</div></div>");
+            sb.append("</div>");
+
+            sb.append("<div style='overflow-x:auto;'>");
+            sb.append("<table><thead><tr>");
+            sb.append("<th>التاريخ والوقت</th><th>اسم العميل</th><th>الجوال</th><th>تفاصيل المنتجات والخيارات</th><th>الإجمالي</th><th>العنوان</th><th>الملاحظات</th>");
+            sb.append("</tr></thead><tbody>").append(rows).append("</tbody></table></div>");
+            sb.append("</div></body></html>");
+
+            sendResponse(exchange, 200, sb.toString());
+        }
+    }
+
+    // بقية معالجات الحسابات
     static class RegisterHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -799,43 +854,6 @@ public class App {
             sb.append("<div class='info-row'><span class='label'>العنوان المحفوظ:</span><span class='val'>").append(user.address).append("</span></div>");
             sb.append("<a href='/products' class='btn-back'>العودة للتسوق</a>");
             sb.append("</div></div></body></html>");
-
-            sendResponse(exchange, 200, sb.toString());
-        }
-    }
-
-    // 7. لوحة إدارة الطلبات
-    static class AdminHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange exchange) throws IOException {
-            StringBuilder rows = new StringBuilder();
-            for (Order o : orders) {
-                rows.append("<tr>")
-                    .append("<td>").append(o.date).append("</td>")
-                    .append("<td>").append(o.name).append("</td>")
-                    .append("<td>").append(o.phone).append("</td>")
-                    .append("<td>").append(o.itemDetails).append("</td>")
-                    .append("<td>").append(o.total).append(" ر.س</td>")
-                    .append("<td>").append(o.address).append("</td>")
-                    .append("<td>").append(o.notes).append("</td>")
-                    .append("</tr>");
-            }
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("<!DOCTYPE html><html lang='ar' dir='rtl'><head><meta charset='UTF-8'>");
-            sb.append("<title>لوحة الإدارة | رِواق</title>");
-            sb.append("<link href='https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap' rel='stylesheet'>");
-            sb.append("<style>").append(getCommonStyles());
-            sb.append("table { width: 100%; border-collapse: collapse; background: #15181e; border-radius: 12px; overflow: hidden; border: 1px solid #232732; }");
-            sb.append("th, td { padding: 14px 18px; text-align: right; border-bottom: 1px solid #232732; font-size: 14px; }");
-            sb.append("th { background: #101217; color: #c5a059; font-weight: 700; } tr:hover { background: #1b1f28; }");
-            sb.append(".back-link { display: inline-block; margin-bottom: 16px; color: #8e95a5; text-decoration: none; font-size: 14px; }");
-            sb.append("</style></head><body><div class='container'>");
-            sb.append("<a href='/' class='back-link'>← العودة للمتجر</a>");
-            sb.append("<h1 style='color:var(--primary); margin-bottom:20px;'>لوحة إدارة الطلبات المباشرة (REWAQ)</h1>");
-            sb.append("<table><thead><tr>");
-            sb.append("<th>التاريخ</th><th>اسم العميل</th><th>الجوال</th><th>المنتجات المطلوبة</th><th>الإجمالي</th><th>العنوان</th><th>ملاحظات</th>");
-            sb.append("</tr></thead><tbody>").append(rows).append("</tbody></table></div></body></html>");
 
             sendResponse(exchange, 200, sb.toString());
         }
